@@ -10,9 +10,9 @@ class LRUCache:
   """
   def __init__(self, limit=10):
     self.max_nodes = limit
-    self.current_node = None
-    self.cache = {}
-    self.storage = DoublyLinkedList() 
+    self.current_nodes = 0
+    self.cache = DoublyLinkedList()
+    self.storage = {}
 
   """
   Retrieves the value associated with the given key. Also
@@ -23,8 +23,11 @@ class LRUCache:
   """
   def get(self, key):
     #takes in the key and returns the value
+    #edge cases
+    if self.current_nodes == 0 or key not in self.cache
+      return None
     #if key, set to current node, else return None
-    if key in self.cache:
+    elif key in self.storage:
       self.current_node = self.cache[key]
     else:
       return None
