@@ -10,7 +10,7 @@ class LRUCache:
   """
   def __init__(self, limit=10):
     self.max_nodes = limit
-    self.current_node = current_node
+    self.current_node = None
     self.cache = {}
     self.storage = DoublyLinkedList() 
 
@@ -22,11 +22,13 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    #if key, else return None
+    #takes in the key and returns the value
+    #if key, set to current node, else return None
     if key in self.cache:
-      current_node = self.cache(key)
-    #takes the key and returns the value
-    pass
+      self.current_node = self.cache[key]
+    else:
+      return None
+    
 
   """
   Adds the given key-value pair to the cache. The newly-
