@@ -1,3 +1,5 @@
+import sys
+sys.path.append('./doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
 class LRUCache:
@@ -22,15 +24,17 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    #takes in the key and returns the value
-    #edge cases
+    #takes in the key
+    #edge cases, no nodes or no key
     if self.current_nodes == 0 or key not in self.cache
       return None
     #if key, set to current node, else return None
     elif key in self.storage:
-      self.current_node = self.cache[key]
-    else:
-      return None
+      value = self.storage[key]
+    
+      return value
+    #move key-value pair to the head aka "most recently used"
+    #return the value
     
 
   """
