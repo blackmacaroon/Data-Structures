@@ -43,23 +43,63 @@ class DoublyLinkedList:
   def __len__(self):
     return self.length
 
+  '''wraps the given value in a ListNode and inserts it as the new head of the list. Don't forge to handle the old head node's pointer'''
   def add_to_head(self, value):
-    pass
+    new_node = ListNode(value, None, None)
+    if not self.head and not self.tail:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.next = self.head
+      self.head.prev = new_node
+      self.head = new_node
+    self.length += 1
 
+  '''removes the list's current head node, making the current head's next node the new head of the list. Returns the value of the removed node '''
   def remove_from_head(self):
-    pass
+    if self.head:
+      value = self.head.value
+      self.delete(self.value)
+      return value
+    else:
+      return None
 
+  ''' wraps the given value in a listNode, inserts it as the new tail of the list. don't forget to handle the old tail's next pointer'''
   def add_to_tail(self, value):
-    pass
+    new_node = ListNode(value, None, None)
+    if not self.head and not self.tail:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.prev = self.tail
+      self.tail.next = new_node
+      self.tail = new_node
+    self.length += 1
 
+  ''' removes the current tail node, making the previous node the new tail of the list. Returns the value of the removed node'''
   def remove_from_tail(self):
-    pass
+    if self.tail:
+      value = self.tail.value
+      self.delete(self.tail)
+      return value
+    else:
+      return None
 
+  ''' removes the input node from its current spot and inserts it as the new head node of the list'''
   def move_to_front(self, node):
-    pass
+    if node is self.head:
+      return
+    value = node.value
+    self.delete(node)
+    self.add_to_head(value)
 
+  '''removes the input node from it's current spot in the list and inserts it as the new tail'''
   def move_to_end(self, node):
-    pass
+    if node is self.tail:
+      return
+    value = node.calue
+    self.delete(node)
+    self.add_to_tail(value)
 
   def delete(self, node):
     pass
