@@ -20,7 +20,17 @@ class BinarySearchTree:
     #if greater than root, move right
     #if less than root, move left
     #recursion?
-    pass
+    while value > self.value:
+      if not self.right:
+        self.right = value
+      else:
+        self.right.insert(value)
+    while value < self.value:
+      if not self.left:
+        self.left = value
+      else:
+        self.left.insert(value)
+    
   '''search the tree for input value, return boolean whether it exists or not
   start from root and traverse the tree
   stop at the first instance of a value
@@ -42,7 +52,7 @@ class BinarySearchTree:
       print("heidy-ho neighbor")
       #what else?
   '''returns the max value in the tree
-  for each, count += 1'''
+  '''
   def get_max(self):
     #hard right til no child = largest 
     if self.right:
