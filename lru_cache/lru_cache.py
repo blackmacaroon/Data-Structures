@@ -12,9 +12,10 @@ class LRUCache:
   """
   def __init__(self, limit=10):
     self.max_nodes = limit
-    self.current_nodes = 0
-    self.cache = DoublyLinkedList()
-    self.storage = {}
+    self.node_count = 0
+    self.current_node = None
+    self.cache = {}
+    self.storage = DoublyLinkedList()
 
   """
   Retrieves the value associated with the given key. Also
@@ -26,16 +27,22 @@ class LRUCache:
   def get(self, key):
     #takes in the key
     #edge cases, no nodes or no key
-    if self.current_nodes == 0 or key not in self.cache
+    if self.node_count == 0 or key not in self.cache:
       return None
     #if key, set to current node, else return None
-    elif key in self.storage:
-      value = self.storage[key]
-    
-      return value
+    elif key in self.cache:
+    #capture node value
+      print("key", key)
+      current_node = self.cache[key]
+      print("current node", current_node)
+    #delete old node
+      self.storage.delete(current_node)
     #move key-value pair to the head aka "most recently used"
+      self.storage.add_to_head([key, current_node.value])
     #return the value
-    
+      print("node", current_node.value)
+      return current_node.value
+
 
   """
   Adds the given key-value pair to the cache. The newly-
