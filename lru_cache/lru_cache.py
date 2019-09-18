@@ -59,6 +59,7 @@ class LRUCache:
       self.storage.delete(current_node)
       #move key-value pair to the head aka "most recently used"
       self.storage.add_to_head([key, value])
+      #set key in cache to new value from storage
       self.cache[key] = [value, self.storage.head]
       return
 
@@ -68,7 +69,8 @@ class LRUCache:
       current_node = self.storage.tail
       self.storage.remove_from_tail()
       #
-    #else just add it to the head
+    #else just add it to the head in storage
     self.storage.add_to_head([key, value])
+    #add new key, value to the cache
     self.cache[key] = [value, self.storage.head]
     self.node_count += 1
