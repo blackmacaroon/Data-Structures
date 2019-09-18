@@ -21,11 +21,13 @@ class BinarySearchTree:
     #if less than root, move left
     #recursion?
     while value > self.value:
+      #if there's no node to the right, value becomes the right node
       if not self.right:
         self.right = value
       else:
         self.right.insert(value)
     while value < self.value:
+      #if there's no node to the left, value becomes the left node
       if not self.left:
         self.left = value
       else:
@@ -57,7 +59,7 @@ class BinarySearchTree:
     #hard right til no child = largest 
     if self.right:
       return self.right.get_max()
-    #edge case, you're the largest!
+    #edge case, you are the largest
     else:
       return self.value
     
