@@ -31,17 +31,14 @@ class LRUCache:
       return None
     #if key, set to current node, else return None
     elif key in self.cache:
-    #capture node value
-      print("key", key)
+      #capture node value
       current_node = self.cache[key]
-      print("current node", current_node)
-    #delete old node
+      #delete old node
       self.storage.delete(current_node)
-    #move key-value pair to the head aka "most recently used"
-      self.storage.add_to_head([key, current_node.value])
-    #return the value
-      print("node", current_node.value)
-      return current_node.value
+      #move key-value pair to the head aka "most recently used"
+      self.storage.add_to_head([key, current_node])
+      #return the value
+      return current_node
 
 
   """
@@ -55,4 +52,23 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    pass
+    #if key exists in cache already, overwrite it
+    if key in self.cache:
+      current_node = self.cache[key]
+      #delete old node
+      self.storage.delete(current_node)
+      #move key-value pair to the head aka "most recently used"
+      self.storage.add_to_head([key, value])
+      self.cache[key] = [value, self.storage.head]
+      return
+
+    #else if cache is full, remove last item and add new item to head
+    if self.max_nodes is self.node_count:
+      #delete tail node
+      current_node = self.storage.tail
+      self.storage.remove_from_tail()
+      #
+    #else just add it to the head
+    self.storage.add_to_head([key, value])
+    self.cache[key] = [value, self.storage.head]
+    self.node_count += 1
