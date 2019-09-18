@@ -87,9 +87,9 @@ class LRUCache:
 
   def set(self, key, value):
     #if key exists in cache already, overwrite it
-    if key in self.cache:
+    if key in self.storage:
       #update dictionary
-      node = self.cache[key]
+      node = self.storage[key]
       node.value = [key, value]
       # mark as most recently used, put it in the head
       self.cache.move_to_front(node)
