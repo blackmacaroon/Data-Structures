@@ -90,8 +90,24 @@ class BinarySearchTree:
   # Hint:  Use a recursive, depth first traversal
 
   def in_order_dft(self, node):
-
-      pass
+    if node.left:
+      node.in_order_dft(node.left)
+    print(node.value)
+    if node.right:
+      node.in_order_dft(node.right)
+    # Stack_Name = Stack()
+    # ordered_list = []
+    # Stack_Name.push(node)
+    # while Stack_Name.size > 0:
+    #     variable = Stack_Name.pop()
+    #     ordered_list.append(variable.value)
+    #     if variable.right:
+    #         Stack_Name.push(variable.right)
+    #     if variable.left:
+    #         Stack_Name.push(variable.left)
+    # # new_list = sorted(ordered_list)
+    # for i in range(0, len(ordered_list)):
+    #     print(ordered_list[i])
 
   # Print the value of every node, starting with the given node,
   # in an iterative breadth first traversal
@@ -106,7 +122,26 @@ class BinarySearchTree:
   shift 
   go to head of queue and continue'''
   def bft_print(self, node):
-      pass
+    # make a queue
+    queue_name = Queue()
+    # add node as root in queue
+    queue_name.enqueue(node)
+    # while queue:
+    # current_node = node
+    while queue_name.size > 0:
+      # pop first item in queue into current_node
+      current_node = queue_name.dequeue()
+      # print(var.value)
+      print(current_node.value)
+      # if var.left:
+      if current_node.left:
+        # add to queue
+        queue_name.enqueue(current_node.left)
+            # elif var.right:
+      if current_node.right:
+        # add to queue
+        queue_name.enqueue(current_node.right)
+    
 
   # Print the value of every node, starting with the given node,
   # in an iterative depth first traversal
@@ -117,10 +152,57 @@ class BinarySearchTree:
   check root.left and put it in stack
   check root.right and put it in stack
   go to top of stack and continue'''
-  
+
   def dft_print(self, node):
-    stack = self.root
-      pass
+    stackAttack = Stack()
+    stackAttack.push(node)
+    while stackAttack.size > 0 :
+      variable = stackAttack.pop()
+      print(variable.value)
+      if variable.left:
+        stackAttack.push(variable.left)
+      if variable.right:
+        stackAttack.push(variable.right)
+    # # make a stack
+    # stack_name = Stack()
+    # # add node as root in stack
+    # stack_name.push(node)
+    # # while stack:
+    # current_node = node
+    # while stack_name:
+    #   # pop first item in stack into 
+    #   current_node = stack_name.pop()
+    #   # print(var.value)
+    #   print(current_node.value)
+    #   # if var.right:
+    #   if current_node.right:
+    #     # add to stack
+    #     stack_name.push(current_node.right)
+    #   # elif var.left:
+    #   elif current_node.left:
+    #     # add to stack
+    #     stack_name.push(current_node.left)
+    # #make a stack
+    # stackName = Stack()
+    # #new empty list
+    # ordered_list = []
+    # #add node to stack
+    # stackName.push(node)
+    # #while stack exists
+    # while stackName.size > 0:
+    #   #pop the top into a variable
+    #   current_node = stackName.pop()
+    #   ordered_list.append(current_node.value)
+    #   if current_node.left:
+    #     stackName.push(current_node.left)
+    #   if current_node.right:
+    #     stackName.push(current_node.right)
+    #   #print(variable.value)
+    #   print(ordered_list)
+      
+      
+  
+
 
   # STRETCH Goals -------------------------
   # Note: Research may be required
@@ -132,3 +214,12 @@ class BinarySearchTree:
   # Print Post-order recursive DFT
   def post_order_dft(self, node):
       pass
+
+
+bst = BinarySearchTree(6)
+bst.insert(4)
+bst.insert(5)
+bst.insert(3)
+bst.insert(8)
+bst.insert(7)
+bst.insert(9)
