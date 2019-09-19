@@ -25,13 +25,13 @@ class BinarySearchTree:
     if value >= self.value:
       #if there's no node to the right, value becomes the right node
       if not self.right:
-        self.right = value
+        self.right = BinarySearchTree(value)
       else:
         self.right.insert(value)
-    if value < self.value:
+    elif value < self.value:
       #if there's no node to the left, value becomes the left node
       if not self.left:
-        self.left = value
+        self.left = BinarySearchTree(value)
       else:
         self.left.insert(value)
     
