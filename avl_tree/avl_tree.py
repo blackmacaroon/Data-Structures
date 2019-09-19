@@ -11,6 +11,9 @@ class Node:
 """
 A tree class to keep track of things like the
 balance factor and the rebalancing logic
+
+AVL is a self-balancing binary search tree where the difference between heights of left and right subtrees cannot be more than one for all nodes
+
 """
 class AVLTree:
   def __init__(self, node=None):
